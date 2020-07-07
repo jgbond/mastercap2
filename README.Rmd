@@ -28,6 +28,7 @@ require(tidyverse)
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.com/jgbond/mastercap.svg?branch=master)](https://travis-ci.com/jgbond/mastercap)
+[![Travis build status](https://travis-ci.com/jgbond/mastercap2.svg?branch=master)](https://travis-ci.com/jgbond/mastercap2)
 <!-- badges: end -->
 
 The goal of this package ('mastercap') is to provide a few simple tools to make it easier to visualize earthquake data. It is part of the final capstone of the Mastering Software Development in R Coursera specialization.
