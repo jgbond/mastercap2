@@ -1,0 +1,12 @@
+export("clean_eq_data")
+export("geom_timeline")
+export("geom_timeline_label")
+export("eq_map")
+
+import(magrittr)
+importFrom(readr, "read_tsv")
+importFrom(dplyr, "mutate", "select", "filter", "tbl_df", "top_n")
+importFrom(stringr, "str_remove_all", "str_to_title", "str_squish", "str_to_lower")
+import(lubridate)
+import(ggplot2)
+import(leaflet)

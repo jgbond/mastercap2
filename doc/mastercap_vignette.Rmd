@@ -1,0 +1,63 @@
+---
+title: "mastercap_vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mastercap_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+require(mastercap)
+require(tidyverse)
+require(magrittr)
+data(raw_data, package = "mastercap")
+```
+
+# Mastercap Earthquake Data Visualization Package
+
+The goal of this package ('mastercap') is to provide a few simple tools to make it easier to visualize earthquake data. It is part of the final capstone of the Mastering Software Development in R Coursera specialization.
+
+The four main functions are:
+1. clean_eq_data() takes raw earthquake data and reformats it into a tidy Tibble
+2. geom_timeline() takes an earthquake Tibble and produces a visual timeline of earthquakes
+3. geom_timeline_label() is the same as geom_timeline() but also adds labels
+4. eq_map() plots earthquakes on an interactive, annotated map
+
+## Example
+
+The first example cleans the raw data and produces an earthquake timeline to display earthquakes in China, Russia, and Japan between Jan 1, 2008, and Jan 1, 2010.
+
+```{r echo = TRUE}
+raw_data %>%
+  mastercap::clean_eq_data() %>%
+  mastercap::geom_timeline(mindate = "2008-01-01",
+                maxdate = "2010-01-01",
+                countries = c("China", "Russia", "Japan"))
+```
+
+The second example demonstrates the same plot but uses the geom_timeline_label function.
+
+```{r echo = TRUE}
+raw_data %>%
+  mastercap::clean_eq_data() %>%
+  mastercap::geom_timeline_label(mindate = "2008-01-01",
+                      maxdate = "2010-01-01",
+                      countries = c("China", "Russia", "Japan"))
+```
+
+The final example demonstrates eq_map. It uses the same filtered data.
+
+```{r echo = TRUE}
+raw_data %>%
+  mastercap::clean_eq_data() %>%
+  dplyr::filter(date >= "2008-01-01",
+         date <= "2010-01-01",
+         country == c("China", "Russia", "Japan")) %>%
+  mastercap::eq_map()
+```
